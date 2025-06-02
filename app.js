@@ -18,3 +18,5 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
   console.log('Server läuft auf Port 3000');
 });
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
