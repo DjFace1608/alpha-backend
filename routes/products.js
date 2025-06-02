@@ -17,3 +17,13 @@ router.post('/import', async (req, res) => {
 });
 
 module.exports = router;
+router.post("/import", async (req, res) => {
+  try {
+    await Product.insertMany(req.body);
+    res.status(200).send("Produkte importiert");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Fehler beim Import");
+  }
+});
+
