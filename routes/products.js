@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Product = require('../models/product');
-
 router.get('/', async (req, res) => {
   const products = await Product.find();
   res.json(products);
 });
-
 router.post('/import', async (req, res) => {
   try {
     await Product.insertMany(req.body);
@@ -15,7 +13,6 @@ router.post('/import', async (req, res) => {
     res.status(400).send(err.message);
   }
 });
-
 module.exports = router;
 router.post("/import", async (req, res) => {
   try {
@@ -26,4 +23,3 @@ router.post("/import", async (req, res) => {
     res.status(500).send("Fehler beim Import");
   }
 });
-
